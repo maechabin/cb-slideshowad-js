@@ -1,19 +1,29 @@
 {
-  "name": "m8plugin",
+  "name": "slideShowAd",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/slideshowad.min.js",
   "scripts": {
-    "watch": "watchify -t babelify ./src/app1.js -o ./dist/bundle1.js",
-    "build": "browserify -t babelify ./src/app1.js | uglifyjs -c warnings=false > ./dist/bundle1.js",
-    "watch2": "watchify -t babelify ./src/app2.js -o ./dist/bundle2.js",
-    "build2": "browserify -t babelify ./src/app2.js | uglifyjs -c warnings=false > ./dist/bundle2.js"
+    "watch": "watchify -t babelify  -p licensify ./src/app.js -o ./dist/bundle.js",
+    "build": "browserify -t babelify ./src/app.js | uglifyjs -c warnings=false -p licensify --includePrivate > ./dist/slideshowad.min.js"
   },
-  "author": "Moba8.net",
-  "license": "mit license",
+  "author": {
+    "email": "mail@chab.in",
+    "name": "maechabin",
+    "url": "http://mae.chab.in/"
+  },
+  "maintainers": [
+    {
+      "name": "maechabin",
+      "email": "mail@chab.in"
+    }
+  ],
+  "homepage": "http://mae.chab.in/",
+  "license": "Mit license",
   "browserify-shim": {
     "jquery": "global:$"
   },
+  "private": true,
   "browserify": {
     "transform": [
       "browserify-shim"
@@ -27,6 +37,7 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "browserify-shim": "^3.8.12",
+    "licensify": "^3.1.0",
     "uglify": "^0.1.5",
     "watchify": "^3.7.0"
   }
