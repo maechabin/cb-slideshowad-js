@@ -65,18 +65,20 @@ var assign = require("object-assign");
 
       this.element = element;
       this.$element = $(element);
+      this.linkNumber = 1;
       this.i = 2;
       this.setTimer = "";
       this.displayImgFlag = "div1";
       this.div1 = $("<div>");
       this.div2 = $("<div>");
-      this.div3 = $("<div>");
+      this.div3 = $("<div>").attr("class", "m8slideshow");
+      this.link = "";
       this.conf = {};
       this.options = options;
       this.defaults = {
         ad: [],
-        width: "300px",
-        height: "250px",
+        width: "",
+        height: "",
         zindex: 999,
         duration: 1000,
         interval: 3000
@@ -88,27 +90,32 @@ var assign = require("object-assign");
       value: function animateImg(div) {
         var d1 = div === "div1" ? "div2" : "div1";
         var d2 = div === "div1" ? "div1" : "div2";
-        var self = this;
+        var _this = this;
 
-        this[d2].animate({
+        _this.link = this.conf.ad[_this.linkNumber].url;
+        _this[d2].animate({
           "opacity": 0
-        }, this.conf.duration, function () {
-          self[d2].css({
+        }, _this.conf.duration, function () {
+          _this[d2].css({
             "z-index": 0,
-            "background-image": "url(" + self.conf.ad[self.i].img + ")"
+            "background-image": "url(" + _this.conf.ad[_this.i].img + ")"
           });
-          self.i++;
+          _this.linkNumber++;
+          _this.i++;
         });
-        this[d1].css({
+        _this[d1].css({
           "z-index": 1
         }).animate({
           "opacity": 1
-        }, this.conf.duration);
-        this.displayImgFlag = d1;
+        }, _this.conf.duration);
+        _this.displayImgFlag = d1;
       }
     }, {
       key: "changeImg",
       value: function changeImg() {
+        if (this.linkNumber >= this.conf.ad.length) {
+          this.linkNumber = 0;
+        }
         if (this.i >= this.conf.ad.length) {
           this.i = 0;
         }
@@ -118,11 +125,14 @@ var assign = require("object-assign");
       key: "makeBg",
       value: function makeBg() {
         var divStyle = {
+          "background-size": "contain",
+          "background-repeat": "no-repeat",
           "position": "absolute",
           "top": 0,
           "left": 0,
           "width": this.conf.width,
-          "height": this.conf.height
+          "height": this.conf.height,
+          "cursor": "pointer"
         };
         var div1Style = {
           "z-index": 1,
@@ -145,6 +155,7 @@ var assign = require("object-assign");
         this.div1.css(assign({}, divStyle, div1Style));
         this.div2.css(assign({}, divStyle, div2Style));
         this.div3.append(this.div1, this.div2);
+        this.link = this.conf.ad[0].url;
         this.$element.after(this.div3);
       }
     }, {
@@ -153,38 +164,65 @@ var assign = require("object-assign");
         this.conf.ad.forEach(function (obj) {
           var imgTag = document.createElement("img");
           imgTag.src = obj.img;
+          imgTag.src = obj.impimg;
         });
       }
     }, {
       key: "getAd",
       value: function getAd() {
         var _this = this;
-        this.$element.find('a').each(function () {
+        _this.$element.find('a').each(function () {
           var $this = $(this);
           var adObj = {};
           var img = $this.find('img').attr('src');
           var url = $this.attr('href');
-          adObj.img = img;
-          adObj.url = url;
-          _this.conf.ad.push(adObj);
+          var impimg = $this.children().eq(0).attr('src');
+          adObj = { img: img, url: url, impimg: impimg };
+          _this.defaults.ad.push(adObj);
         });
         return _this.ad;
       }
     }, {
-      key: "init",
-      value: function init() {
+      key: "getImgSize",
+      value: function getImgSize() {
+        var _this = this;
+        var img = _this.$element.find('a').find('img');
+        img.each(function () {
+          var $this = $(this);
+          if ($this.attr("width") && $this.attr("height")) {
+            _this.defaults.width = $this.attr("width");
+            _this.defaults.height = $this.attr("height");
+            return;
+          }
+        });
+      }
+    }, {
+      key: "clickAd",
+      value: function clickAd() {
         var _this2 = this;
 
-        this.conf = assign({}, this.defaults, this.options);
+        var elm = $(".m8slideshow");
+        elm.on("click", function () {
+          window.open(_this2.link);
+        });
+      }
+    }, {
+      key: "init",
+      value: function init() {
+        var _this3 = this;
+
         this.getAd();
+        this.getImgSize();
+        this.conf = assign({}, this.defaults, this.options);
         this.makeBg();
         if (this.conf.ad.length) {
           var timer = void 0;
           this.preloadImg();
           this.setTimer = setInterval(function () {
-            _this2.changeImg();
+            _this3.changeImg();
           }, this.conf.interval);
         }
+        this.clickAd();
         return this;
       }
     }]);
@@ -194,10 +232,10 @@ var assign = require("object-assign");
 
   $.extend($.fn, {
     slideShowAd: function slideShowAd(options) {
-      var _this3 = this;
+      var _this4 = this;
 
       return this.each(function () {
-        new SlideShowAd(_this3, options).init();
+        new SlideShowAd(_this4, options).init();
       });
     }
   });
