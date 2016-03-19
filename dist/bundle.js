@@ -230,7 +230,7 @@ var assign = require("object-assign");
         this.makeBg();
         if (this.conf.ad.length) {
           var timer = void 0;
-          this.preloadImg();
+          //this.preloadImg();
           this.setTimer = setInterval(function () {
             _this3.changeImg();
           }, this.conf.interval);

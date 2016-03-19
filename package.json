@@ -1,29 +1,22 @@
 {
   "name": "slideShowAd",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "./dist/slideshowad.min.js",
   "scripts": {
     "watch": "watchify -t babelify  -p licensify ./src/app.js -o ./dist/bundle.js",
-    "build": "browserify -t babelify ./src/app.js | uglifyjs -c warnings=false -p licensify --includePrivate > ./dist/slideshowad.min.js"
+    "build": "browserify -t babelify ./src/app.js | uglifyjs -c warnings=false -p licensify > ./dist/jquery.slideshowad.js"
   },
   "author": {
     "email": "mail@chab.in",
     "name": "maechabin",
     "url": "http://mae.chab.in/"
   },
-  "maintainers": [
-    {
-      "name": "maechabin",
-      "email": "mail@chab.in"
-    }
-  ],
   "homepage": "http://mae.chab.in/",
   "license": "Mit license",
   "browserify-shim": {
     "jquery": "global:$"
   },
-  "private": true,
   "browserify": {
     "transform": [
       "browserify-shim"

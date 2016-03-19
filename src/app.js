@@ -153,7 +153,7 @@ var assign = require("object-assign");
       this.makeBg();
       if (this.conf.ad.length) {
         let timer;
-        this.preloadImg();
+        //this.preloadImg();
         this.setTimer = setInterval(() => {
           this.changeImg();
         }, this.conf.interval);
