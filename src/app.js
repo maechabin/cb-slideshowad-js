@@ -116,7 +116,7 @@ var jQuery = require('jquery');
       _this.$element.find('a').each(function () {
         let $this = $(this);
         let adObj = {};
-        let img = $this.find('img').attr('src') || '';
+        let img = $this.find('img').eq(0).attr('src') || '';
         let url = $this.attr('href') || '';
         let impimg = $this.children().eq(0).attr('src') || '';
         adObj　= {img, url, impimg};

@@ -132,7 +132,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         _this.$element.find('a').each(function () {
           var $this = $(this);
           var adObj = {};
-          var img = $this.find('img').attr('src') || '';
+          var img = $this.find('img').eq(0).attr('src') || '';
           var url = $this.attr('href') || '';
           var impimg = $this.children().eq(0).attr('src') || '';
           adObj = { img: img, url: url, impimg: impimg };

@@ -1,6 +1,6 @@
 {
   "name": "slideShowAd",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "複数のバナー広告を組み合わせてスライドショー動画広告を実装するためのjQueryプラグイン",
   "main": "./dist/jquery.slideshowas.js",
   "scripts": {
