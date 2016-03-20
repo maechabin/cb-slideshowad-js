@@ -1,15 +1,15 @@
 {
   "name": "slideShowAd",
-  "version": "1.0.1",
-  "description": "",
-  "main": "./dist/slideshowad.min.js",
+  "version": "1.0.2",
+  "description": "複数のバナー広告を組み合わせてスライドショー動画広告を実装するためのjQueryプラグイン",
+  "main": "./dist/jquery.slideshowas.js",
   "scripts": {
-    "watch": "watchify -t babelify  -p licensify ./src/app.js -o ./dist/bundle.js",
-    "build": "browserify -t babelify ./src/app.js | uglifyjs -c warnings=false -p licensify > ./dist/jquery.slideshowad.js"
+    "watch": "watchify -t babelify ./src/app.js -o ./dist/bundle.js",
+    "build": "browserify -t babelify ./src/app.js | uglifyjs -c warnings=false > ./dist/jquery.slideshowad.js"
   },
   "author": {
     "email": "mail@chab.in",
-    "name": "maechabin",
+    "name": "Takanori Maeda (@maechabin)",
     "url": "http://mae.chab.in/"
   },
   "homepage": "http://mae.chab.in/",
@@ -23,6 +23,7 @@
     ]
   },
   "dependencies": {
+    "jquery": "^1.11.2",
     "object-assign": "^4.0.1"
   },
   "devDependencies": {

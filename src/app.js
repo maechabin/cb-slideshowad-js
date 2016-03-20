@@ -1,9 +1,8 @@
-var jQuery = require("jquery");
-var assign = require("object-assign");
+var jQuery = require('jquery');
 
 ((factory) => {
-  if (typeof module === "object" && typeof module.exports === "object") {
-    module.exports = factory(require("jquery"), window, document);
+  if (typeof module === 'object' && typeof module.exports === 'object') {
+    module.exports = factory(require('jquery'), window, document);
   } else {
     factory(jQuery, window, document);
   }
@@ -16,44 +15,44 @@ var assign = require("object-assign");
       this.$element = $(element);
       this.linkNumber = 1;
       this.i = 2;
-      this.setTimer = "";
-      this.displayImgFlag = "div1";
-      this.div1 = $("<div>");
-      this.div2 = $("<div>");
-      this.div3 = $("<div>").attr("class", "m8slideshow");
-      this.link = "";
+      this.setTimer = '';
+      this.displayImgFlag = 'div1';
+      this.div1 = $('<div>');
+      this.div2 = $('<div>');
+      this.div3 = $('<div>').attr('class', 'cb-slideshow');
+      this.link = '';
       this.conf = {};
       this.options = options;
       this.defaults = {
         ad: [],
-        width: "",
-        height: "",
+        width: '',
+        height: '',
         zindex: 999,
         duration: 1000,
-        interval: 3000
+        interval: 5000
       };
     }
 
     animateImg(div) {
-      let d1 = (div === "div1") ? "div2" : "div1";
-      let d2 = (div === "div1") ? "div1" : "div2";
+      let d1 = (div === 'div1') ? 'div2' : 'div1';
+      let d2 = (div === 'div1') ? 'div1' : 'div2';
       let _this = this;
 
       _this.link = this.conf.ad[_this.linkNumber].url;
       _this[d2].animate({
-        "opacity": 0
+        'opacity': 0
       }, _this.conf.duration, () => {
         _this[d2].css({
-          "z-index": 0,
-          "background-image": "url(" + _this.conf.ad[_this.i].img + ")"
+          'z-index': 0,
+          'background-image': `url(${_this.conf.ad[_this.i].img})`
         });
         _this.linkNumber++;
         _this.i++;
       });
       _this[d1].css({
-        "z-index": 1
+        'z-index': 1
       }).animate({
-        "opacity": 1
+        'opacity': 1
       }, _this.conf.duration);
       _this.displayImgFlag = d1;
     }
@@ -70,35 +69,35 @@ var assign = require("object-assign");
 
     makeBg() {
       let divStyle = {
-        "background-size": "contain",
-        "background-repeat": "no-repeat",
-        "position": "absolute",
-        "top": 0,
-        "left": 0,
-        "width": this.conf.width,
-        "height": this.conf.height,
-        "cursor": "pointer"
+        'background-size': 'contain',
+        'background-repeat': 'no-repeat',
+        'position': 'absolute',
+        'top': 0,
+        'left': 0,
+        'width': this.conf.width,
+        'height': this.conf.height,
+        'cursor': 'pointer'
       };
       let div1Style = {
-        "z-index": 1,
-        "opacity": 1,
-        "background-image": "url(" + this.conf.ad[0].img + ")"
+        'z-index': 1,
+        'opacity': 1,
+        'background-image': `url(${this.conf.ad[0].img})`
       };
       let div2Style = {
-        "z-index": 0,
-        "opacity": 0,
-        "background-image": "url(" + this.conf.ad[1].img + ")"
+        'z-index': 0,
+        'opacity': 0,
+        'background-image': `url(${this.conf.ad[1].img})`
       };
 
       this.div3.css({
-        "z-index": this.conf.zindex,
-        "position": "relative",
-        "width": this.conf.width,
-        "height": this.conf.height,
-        "background-color": this.conf.background
+        'z-index': this.conf.zindex,
+        'position': 'relative',
+        'width': this.conf.width,
+        'height': this.conf.height,
+        'background-color': this.conf.background
       });
-      this.div1.css(assign({}, divStyle, div1Style));
-      this.div2.css(assign({}, divStyle, div2Style));
+      this.div1.css($.extend({}, divStyle, div1Style));
+      this.div2.css($.extend({}, divStyle, div2Style));
       this.div3.append(this.div1, this.div2);
       this.link = this.conf.ad[0].url;
       this.$element.after(this.div3);
@@ -106,7 +105,7 @@ var assign = require("object-assign");
 
     preloadImg() {
       this.conf.ad.forEach((obj) => {
-        let imgTag = document.createElement("img");
+        let imgTag = document.createElement('img');
         imgTag.src = obj.img;
         imgTag.src = obj.impimg;
       });
@@ -117,9 +116,9 @@ var assign = require("object-assign");
       _this.$element.find('a').each(function () {
         let $this = $(this);
         let adObj = {};
-        let img = $this.find('img').attr('src');
-        let url = $this.attr('href');
-        let impimg = $this.children().eq(0).attr('src');
+        let img = $this.find('img').attr('src') || '';
+        let url = $this.attr('href') || '';
+        let impimg = $this.children().eq(0).attr('src') || '';
         adObj　= {img, url, impimg};
         _this.defaults.ad.push(adObj);
       });
@@ -131,17 +130,17 @@ var assign = require("object-assign");
       let img = _this.$element.find('a').find('img');
       img.each(function () {
         let $this = $(this);
-        if ($this.attr("width") && $this.attr("height")) {
-          _this.defaults.width = $this.attr("width");
-          _this.defaults.height = $this.attr("height");
+        if ($this.attr('width') && $this.attr('height')) {
+          _this.defaults.width = $this.attr('width');
+          _this.defaults.height = $this.attr('height');
           return;
         }
       });
     }
 
     clickAd() {
-      let elm = $(".m8slideshow");
-      elm.on("click", () => {
+      let elm = $('.cb-slideshow');
+      elm.on('click', () => {
         window.open(this.link);
       });
     }
@@ -149,10 +148,9 @@ var assign = require("object-assign");
     init() {
       this.getAd();
       this.getImgSize();
-      this.conf = assign({}, this.defaults, this.options);
+      this.conf = $.extend({}, this.defaults, this.options);
       this.makeBg();
       if (this.conf.ad.length) {
-        let timer;
         //this.preloadImg();
         this.setTimer = setInterval(() => {
           this.changeImg();
