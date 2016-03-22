@@ -94,6 +94,7 @@ var jQuery = require('jquery');
       this.div3.css({
         'z-index': this.conf.zindex,
         'position': 'relative',
+        'display': 'inline-block',
         'width': this.conf.width,
         'height': this.conf.height,
         'background-color': this.conf.background
@@ -149,10 +150,14 @@ var jQuery = require('jquery');
     }
 
     init() {
-      this.$element.css('display', 'none');
       this.getAd();
       this.getImgSize();
       this.conf = $.extend({}, this.defaults, this.options);
+      this.$element.css({
+        'display': 'none',
+        'width': this.conf.width,
+        'height': this.conf.height
+      });
       this.makeBg();
       if (this.conf.ad.length) {
         //this.preloadImg();
