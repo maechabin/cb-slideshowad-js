@@ -36,9 +36,11 @@ var jQuery = require('jquery');
     animateImg(div) {
       let d1 = (div === 'div1') ? 'div2' : 'div1';
       let d2 = (div === 'div1') ? 'div1' : 'div2';
+      let elm = $('.cb-slideshow');
       let _this = this;
 
       _this.link = this.conf.ad[_this.linkNumber].url;
+      elm.attr('data', _this.link);
       _this[d2].animate({
         'opacity': 0
       }, _this.conf.duration, () => {
@@ -100,6 +102,7 @@ var jQuery = require('jquery');
       this.div2.css($.extend({}, divStyle, div2Style));
       this.div3.append(this.div1, this.div2);
       this.link = this.conf.ad[0].url;
+      this.div3.attr('data', this.link);
       this.$element.after(this.div3);
     }
 
@@ -127,7 +130,7 @@ var jQuery = require('jquery');
 
     getImgSize() {
       let _this = this;
-      let img = _this.$element.find('a').find('img');
+      let img = _this.$element.find('a').eq(0).find('img').eq(0);
       img.each(function () {
         let $this = $(this);
         if ($this.attr('width') && $this.attr('height')) {

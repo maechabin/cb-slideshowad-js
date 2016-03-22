@@ -48,9 +48,11 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
       value: function animateImg(div) {
         var d1 = div === 'div1' ? 'div2' : 'div1';
         var d2 = div === 'div1' ? 'div1' : 'div2';
+        var elm = $('.cb-slideshow');
         var _this = this;
 
         _this.link = this.conf.ad[_this.linkNumber].url;
+        elm.attr('data', _this.link);
         _this[d2].animate({
           'opacity': 0
         }, _this.conf.duration, function () {
@@ -114,6 +116,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         this.div2.css($.extend({}, divStyle, div2Style));
         this.div3.append(this.div1, this.div2);
         this.link = this.conf.ad[0].url;
+        this.div3.attr('data', this.link);
         this.$element.after(this.div3);
       }
     }, {
@@ -144,7 +147,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
       key: 'getImgSize',
       value: function getImgSize() {
         var _this = this;
-        var img = _this.$element.find('a').find('img');
+        var img = _this.$element.find('a').eq(0).find('img').eq(0);
         img.each(function () {
           var $this = $(this);
           if ($this.attr('width') && $this.attr('height')) {
