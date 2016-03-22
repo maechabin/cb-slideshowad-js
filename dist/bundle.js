@@ -172,6 +172,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
       value: function init() {
         var _this3 = this;
 
+        this.$element.css('display', 'none');
         this.getAd();
         this.getImgSize();
         this.conf = $.extend({}, this.defaults, this.options);

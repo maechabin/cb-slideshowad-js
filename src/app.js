@@ -149,6 +149,7 @@ var jQuery = require('jquery');
     }
 
     init() {
+      this.$element.css('display', 'none');
       this.getAd();
       this.getImgSize();
       this.conf = $.extend({}, this.defaults, this.options);
