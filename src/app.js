@@ -27,9 +27,11 @@ var jQuery = require('jquery');
         ad: [],
         width: '',
         height: '',
-        zindex: 999,
+        zIndex: 999,
         duration: 1000,
-        interval: 5000
+        interval: 5000,
+        targetBlank: false,
+        backgroundColor: '#f5f5f5'
       };
     }
 
@@ -73,6 +75,7 @@ var jQuery = require('jquery');
       let divStyle = {
         'background-size': 'contain',
         'background-repeat': 'no-repeat',
+        'background-color': this.conf.backgroundColor,
         'position': 'absolute',
         'top': 0,
         'left': 0,
@@ -90,7 +93,7 @@ var jQuery = require('jquery');
         'background-image': `url(${this.conf.ad[1].img})`
       };
       let div3Style = {
-        'z-index': this.conf.zindex,
+        'z-index': this.conf.zIndex,
         'position': 'relative',
         'display': 'inline-block',
         'width': this.conf.width,
@@ -142,7 +145,7 @@ var jQuery = require('jquery');
           imgSize.width = _this.defaults.width;
           imgSize.height = _this.defaults.height;
         } else {
-          var imgObj = new Image();
+          let imgObj = new Image();
           imgObj.src = $this.attr('src');
           _this.defaults.width = imgObj.width;
           _this.defaults.height = imgObj.height;
@@ -156,7 +159,11 @@ var jQuery = require('jquery');
     clickAd() {
       let elm = $('.cb-slideshow');
       elm.on('click', () => {
-        window.open(this.link);
+        if (this.conf.targetBlank) {
+          window.open(this.link);
+        } else {
+          window.location.href = this.link;
+        }
       });
     }
 

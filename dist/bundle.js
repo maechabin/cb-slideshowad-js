@@ -37,9 +37,11 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         ad: [],
         width: '',
         height: '',
-        zindex: 999,
+        zIndex: 999,
         duration: 1000,
-        interval: 5000
+        interval: 5000,
+        targetBlank: false,
+        backgroundColor: '#f5f5f5'
       };
     }
 
@@ -87,6 +89,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         var divStyle = {
           'background-size': 'contain',
           'background-repeat': 'no-repeat',
+          'background-color': this.conf.backgroundColor,
           'position': 'absolute',
           'top': 0,
           'left': 0,
@@ -104,7 +107,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
           'background-image': 'url(' + this.conf.ad[1].img + ')'
         };
         var div3Style = {
-          'z-index': this.conf.zindex,
+          'z-index': this.conf.zIndex,
           'position': 'relative',
           'display': 'inline-block',
           'width': this.conf.width,
@@ -173,7 +176,11 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
 
         var elm = $('.cb-slideshow');
         elm.on('click', function () {
-          window.open(_this2.link);
+          if (_this2.conf.targetBlank) {
+            window.open(_this2.link);
+          } else {
+            window.location.href = _this2.link;
+          }
         });
       }
     }, {

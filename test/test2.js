@@ -9,7 +9,7 @@
         width: '300px',
         height: '250px',
         interval: 1000,
-        zindex: 1000
+        zIndex: 1000
       });
     }
   });
