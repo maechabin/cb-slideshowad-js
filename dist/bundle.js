@@ -91,8 +91,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
           'top': 0,
           'left': 0,
           'width': this.conf.width,
-          'height': this.conf.height,
-          'cursor': 'pointer'
+          'height': this.conf.height
         };
         var div1Style = {
           'z-index': 1,
@@ -104,20 +103,19 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
           'opacity': 0,
           'background-image': 'url(' + this.conf.ad[1].img + ')'
         };
-
-        this.div3.css({
+        var div3Style = {
           'z-index': this.conf.zindex,
           'position': 'relative',
           'display': 'inline-block',
           'width': this.conf.width,
           'height': this.conf.height,
-          'background-color': this.conf.background
-        });
+          'cursor': 'pointer'
+        };
+
+        this.link = this.conf.ad[0].url;
         this.div1.css($.extend({}, divStyle, div1Style));
         this.div2.css($.extend({}, divStyle, div2Style));
-        this.div3.append(this.div1, this.div2);
-        this.link = this.conf.ad[0].url;
-        this.div3.attr('data', this.link);
+        this.div3.append(this.div1, this.div2).css(div3Style).attr('data', this.link);
         this.$element.after(this.div3);
       }
     }, {
@@ -155,19 +153,15 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
           if ($this.attr('width') && $this.attr('height')) {
             _this.defaults.width = $this.attr('width');
             _this.defaults.height = $this.attr('height');
-            imgSize = {
-              'width': _this.defaults.width,
-              'height': _this.defaults.height
-            };
+            imgSize.width = _this.defaults.width;
+            imgSize.height = _this.defaults.height;
           } else {
             var imgObj = new Image();
             imgObj.src = $this.attr('src');
             _this.defaults.width = imgObj.width;
             _this.defaults.height = imgObj.height;
-            imgSize = {
-              'width': _this.defaults.width,
-              'height': _this.defaults.height
-            };
+            imgSize.width = _this.defaults.width;
+            imgSize.height = _this.defaults.height;
           }
           return imgSize;
         });
