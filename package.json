@@ -2,7 +2,7 @@
   "name": "slideShowAd",
   "version": "1.0.8",
   "description": "複数のバナー広告を組み合わせてスライドショー動画広告を実装するためのjQueryプラグイン",
-  "main": "./dist/jquery.slideshowas.js",
+  "main": "./dist/jquery.slideshowad.js",
   "scripts": {
     "watch": "watchify -t babelify ./src/app.js -o ./dist/bundle.js",
     "build": "browserify -t babelify ./src/app.js | uglifyjs -c warnings=false > ./dist/jquery.slideshowad.js"
@@ -12,6 +12,9 @@
     "name": "Takanori Maeda (@maechabin)",
     "url": "http://mae.chab.in/"
   },
+  "keywords": [
+    "jQuery"
+  ],
   "homepage": "http://mae.chab.in/",
   "license": "Mit license",
   "browserify-shim": {

@@ -26,6 +26,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
       this.linkNumber = 1;
       this.i = 2;
       this.setTimer = '';
+      this.adImg = this.$element.find('a').eq(0).find('img').eq(0);
       this.displayImgFlag = 'div1';
       this.div1 = $('<div>');
       this.div2 = $('<div>');
@@ -148,26 +149,21 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
     }, {
       key: 'getImgSize',
       value: function getImgSize() {
-        var _this = this;
         var imgSize = {};
-        var img = _this.$element.find('a').eq(0).find('img').eq(0);
-        img.each(function () {
-          var $this = $(this);
-          if ($this.attr('width') && $this.attr('height')) {
-            _this.defaults.width = $this.attr('width');
-            _this.defaults.height = $this.attr('height');
-            imgSize.width = _this.defaults.width;
-            imgSize.height = _this.defaults.height;
-          } else {
-            var imgObj = new Image();
-            imgObj.src = $this.attr('src');
-            _this.defaults.width = imgObj.width;
-            _this.defaults.height = imgObj.height;
-            imgSize.width = _this.defaults.width;
-            imgSize.height = _this.defaults.height;
-          }
-          return imgSize;
-        });
+        if (this.adImg.attr('width') && this.adImg.attr('height')) {
+          this.defaults.width = this.adImg.attr('width');
+          this.defaults.height = this.adImg.attr('height');
+          imgSize.width = this.defaults.width;
+          imgSize.height = this.defaults.height;
+        } else {
+          var imgObj = new Image();
+          imgObj.src = img.attr('src');
+          this.defaults.width = imgObj.width;
+          this.defaults.height = imgObj.height;
+          imgSize.width = this.defaults.width;
+          imgSize.height = this.defaults.height;
+        }
+        return imgSize;
       }
     }, {
       key: 'clickAd',
