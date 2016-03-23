@@ -76,7 +76,7 @@ htmlファイル内にスライドショー動画広告を表示させる要素�
 </div>
 ```
 
-設定する広告タグは以下の形式（`img要素`を持った`a要素`）となります。a要素には必ずhref属性、img要素にはwidth属性、height属性を設定するようにしてください。インプレッションを計測するためのimg要素はあってもなくても問題ありません。（多くのアフィリエイトサービスの広告タグは以下の形式となっていることが多いです）
+設定する広告タグは以下の形式（`img要素`を持った`a要素`）となります。a要素には必ずhref属性、img要素にはwidth属性、height属性を設定するようにしてください（width属性、height属性がない場合）。インプレッションを計測するためのimg要素はあってもなくても問題ありません。（多くのアフィリエイトサービスの広告タグは以下の形式となっていることが多いです）
 ```html
 <!-- スライドショーの対象となる広告タグの形式 -->
 
@@ -121,7 +121,10 @@ $('.slideshowad-images').slideShowAd({
 
 ## 対応ASP（アフィリエイトサービス）一覧
 
-[A8.net](https://www.a8.net/)
+そのまま管理画面から広告タグをコピーして使えるアフィリエイトサービスの一覧です（調査中）。
+
+[A8.net](http://px.a8.net/svt/ejp?a8mat=2BYLM2+1C85JU+0K+10H0IQ) / [Moba8.net](http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6HU7L&guid=on) / [リンクシェア](http://www.linkshare.ne.jp/scland/mgm/?id=69Bb10/Y2MU) / [TGアフィリエイト](https://www.trafficgate.net/) / [Amazonアソシエイト](https://affiliate.amazon.co.jp/gp/associates/network/main.html)
+
 
 ## License
 

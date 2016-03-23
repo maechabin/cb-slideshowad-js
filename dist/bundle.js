@@ -148,14 +148,28 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
       key: 'getImgSize',
       value: function getImgSize() {
         var _this = this;
+        var imgSize = {};
         var img = _this.$element.find('a').eq(0).find('img').eq(0);
         img.each(function () {
           var $this = $(this);
           if ($this.attr('width') && $this.attr('height')) {
             _this.defaults.width = $this.attr('width');
             _this.defaults.height = $this.attr('height');
-            return;
+            imgSize = {
+              'width': _this.defaults.width,
+              'height': _this.defaults.height
+            };
+          } else {
+            var imgObj = new Image();
+            imgObj.src = $this.attr('src');
+            _this.defaults.width = imgObj.width;
+            _this.defaults.height = imgObj.height;
+            imgSize = {
+              'width': _this.defaults.width,
+              'height': _this.defaults.height
+            };
           }
+          return imgSize;
         });
       }
     }, {
