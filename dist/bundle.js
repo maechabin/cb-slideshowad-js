@@ -128,7 +128,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         this.conf.ad.forEach(function (obj) {
           var imgTag = document.createElement('img');
           imgTag.src = obj.img;
-          imgTag.src = obj.impimg;
+          //imgTag.src = obj.impimg;
         });
       }
     }, {
@@ -194,7 +194,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         });
         this.makeBg();
         if (this.conf.ad.length) {
-          //this.preloadImg();
+          this.preloadImg();
           this.setTimer = setInterval(function () {
             _this3.changeImg();
           }, this.conf.interval);

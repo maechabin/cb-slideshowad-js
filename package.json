@@ -1,6 +1,6 @@
 {
   "name": "slideShowAd",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "複数のバナー広告を組み合わせてスライドショー動画広告を実装するためのjQueryプラグイン",
   "main": "./dist/jquery.slideshowad.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "url": "http://mae.chab.in/"
   },
   "keywords": [
-    "jQuery"
+    "jQuery", "jquery-plugin"
   ],
   "homepage": "http://mae.chab.in/",
   "license": "Mit license",
