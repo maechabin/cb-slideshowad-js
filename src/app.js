@@ -116,7 +116,7 @@ var jQuery = require('jquery');
       this.conf.ad.forEach((obj) => {
         let imgTag = document.createElement('img');
         imgTag.src = obj.img;
-        imgTag.src = obj.impimg;
+        //imgTag.src = obj.impimg;
       });
     }
 
@@ -174,7 +174,7 @@ var jQuery = require('jquery');
       });
       this.makeBg();
       if (this.conf.ad.length) {
-        //this.preloadImg();
+        this.preloadImg();
         this.setTimer = setInterval(() => {
           this.changeImg();
         }, this.conf.interval);
