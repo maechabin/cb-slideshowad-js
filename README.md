@@ -21,6 +21,13 @@
 $ git clone git@github.com:maechabin/jquery-slideShowAd-js.git 任意のディレクトリ名
 ```
 
+npm経由でも入手可能です。
+
+```
+$ npm install --save slideshowad
+```
+
+
 機能の実装に使用するファイルは以下のjsファイルとなります。
 - ./dist/jquery.slideshowad.js
 
