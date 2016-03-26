@@ -1,6 +1,6 @@
 {
-  "name": "slideShowAd",
-  "version": "1.0.9",
+  "name": "slideshowad",
+  "version": "1.1.0",
   "description": "複数のバナー広告を組み合わせてスライドショー動画広告を実装するためのjQueryプラグイン",
   "main": "./dist/jquery.slideshowad.js",
   "scripts": {
@@ -11,6 +11,10 @@
     "email": "mail@chab.in",
     "name": "Takanori Maeda (@maechabin)",
     "url": "http://mae.chab.in/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:maechabin/jquery-slideShowAd-js.git"
   },
   "keywords": [
     "jQuery", "jquery-plugin"
