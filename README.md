@@ -11,7 +11,7 @@
 
 ## Demo
 
-[http://jsrun.it/maechabin/sXti](http://jsrun.it/maechabin/sXti)
+[http://support.moba8.net/tools/slideshowad/demo.html](http://support.moba8.net/tools/slideshowad/demo.html)
 
 ## Download
 
@@ -127,12 +127,6 @@ $('.slideshowad-images').slideShowAd({
   'interval': '8000'
 });
 ```
-
-## 対応ASP（アフィリエイトサービス）一覧
-
-そのまま管理画面から広告タグをコピーして使えるアフィリエイトサービスの一覧です（調査中）。
-
-[A8.net](http://px.a8.net/svt/ejp?a8mat=2BYLM2+1C85JU+0K+10H0IQ) / [Moba8.net](http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6HU7L&guid=on) / [リンクシェア](http://www.linkshare.ne.jp/scland/mgm/?id=69Bb10/Y2MU) / [TGアフィリエイト](https://www.trafficgate.net/) / [Amazonアソシエイト](https://affiliate.amazon.co.jp/gp/associates/network/main.html)
 
 ## License
 
