@@ -32,18 +32,19 @@ var jQuery = require('jquery');
         duration: 1000,
         interval: 5000,
         targetBlank: false,
+        slideShowType: 'fade',
         backgroundColor: '#f5f5f5'
       };
     }
 
-    animateImg(div) {
+    fadeImg(div) {
       let d1 = (div === 'div1') ? 'div2' : 'div1';
       let d2 = (div === 'div1') ? 'div1' : 'div2';
       let elm = $('.cb-slideshow');
       let _this = this;
-
       _this.link = this.conf.ad[_this.linkNumber].url;
       elm.attr('data', _this.link);
+
       _this[d2].animate({
         'opacity': 0
       }, _this.conf.duration, () => {
@@ -62,6 +63,45 @@ var jQuery = require('jquery');
       _this.displayImgFlag = d1;
     }
 
+    flipImg(div) {
+      let d1 = (div === 'div1') ? 'div2' : 'div1';
+      let d2 = (div === 'div1') ? 'div1' : 'div2';
+      let elm = $('.cb-slideshow');
+      let _this = this;
+      _this.link = this.conf.ad[_this.linkNumber].url;
+      elm.attr('data', _this.link);
+      let a = (div === 'div1') ? '180deg' : '0';
+
+      elm.css({
+        'perspective': 1000,
+        'transition': '.3s',
+        'transform': `rotateY(${a})`,
+        'transformStyle': 'preserve-3d',
+        'position': 'relative'
+      });
+
+      _this[d2].animate({
+        //'opacity': 0
+      }, _this.conf.duration, () => {
+        _this[d2].css({
+          //'backfaceVisibility': 'hidden',
+          'opacity': 1,
+          'background-image': `url(${_this.conf.ad[_this.i].img})`
+        });
+        _this.linkNumber++;
+        _this.i++;
+      });
+      _this[d1].css({
+        'opacity': 0,
+        //'backfaceVisibility': 'visible',
+        //'transform': 'rotateY(180deg)',
+        'z-index': 1
+      }).animate({
+        //'opacity': 1
+      }, _this.conf.duration);
+      _this.displayImgFlag = d1;
+    }
+
     changeImg() {
       if (this.linkNumber >= this.conf.ad.length) {
         this.linkNumber = 0;
@@ -69,7 +109,17 @@ var jQuery = require('jquery');
       if (this.i >= this.conf.ad.length) {
         this.i = 0;
       }
-      this.animateImg(this.displayImgFlag);
+
+      switch (this.conf.slideShowType) {
+        case 'fade':
+          this.fadeImg(this.displayImgFlag);
+          break;
+        case 'flip':
+          this.flipImg(this.displayImgFlag);
+          break;
+        default:
+          break;
+      }
     }
 
     makeBg() {

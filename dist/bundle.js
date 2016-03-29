@@ -42,20 +42,21 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         duration: 1000,
         interval: 5000,
         targetBlank: false,
+        slideShowType: 'fade',
         backgroundColor: '#f5f5f5'
       };
     }
 
     _createClass(SlideShowAd, [{
-      key: 'animateImg',
-      value: function animateImg(div) {
+      key: 'fadeImg',
+      value: function fadeImg(div) {
         var d1 = div === 'div1' ? 'div2' : 'div1';
         var d2 = div === 'div1' ? 'div1' : 'div2';
         var elm = $('.cb-slideshow');
         var _this = this;
-
         _this.link = this.conf.ad[_this.linkNumber].url;
         elm.attr('data', _this.link);
+
         _this[d2].animate({
           'opacity': 0
         }, _this.conf.duration, function () {
@@ -74,6 +75,46 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         _this.displayImgFlag = d1;
       }
     }, {
+      key: 'flipImg',
+      value: function flipImg(div) {
+        var d1 = div === 'div1' ? 'div2' : 'div1';
+        var d2 = div === 'div1' ? 'div1' : 'div2';
+        var elm = $('.cb-slideshow');
+        var _this = this;
+        _this.link = this.conf.ad[_this.linkNumber].url;
+        elm.attr('data', _this.link);
+        var a = div === 'div1' ? '180deg' : '0';
+
+        elm.css({
+          'perspective': 1000,
+          'transition': '.3s',
+          'transform': 'rotateY(' + a + ')',
+          'transformStyle': 'preserve-3d',
+          'position': 'relative'
+        });
+
+        _this[d2].animate({
+          //'opacity': 0
+        }, _this.conf.duration, function () {
+          _this[d2].css({
+            //'backfaceVisibility': 'hidden',
+            'opacity': 1,
+            'background-image': 'url(' + _this.conf.ad[_this.i].img + ')'
+          });
+          _this.linkNumber++;
+          _this.i++;
+        });
+        _this[d1].css({
+          'opacity': 0,
+          //'backfaceVisibility': 'visible',
+          //'transform': 'rotateY(180deg)',
+          'z-index': 1
+        }).animate({
+          //'opacity': 1
+        }, _this.conf.duration);
+        _this.displayImgFlag = d1;
+      }
+    }, {
       key: 'changeImg',
       value: function changeImg() {
         if (this.linkNumber >= this.conf.ad.length) {
@@ -82,7 +123,17 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         if (this.i >= this.conf.ad.length) {
           this.i = 0;
         }
-        this.animateImg(this.displayImgFlag);
+
+        switch (this.conf.slideShowType) {
+          case 'fade':
+            this.fadeImg(this.displayImgFlag);
+            break;
+          case 'flip':
+            this.flipImg(this.displayImgFlag);
+            break;
+          default:
+            break;
+        }
       }
     }, {
       key: 'makeBg',
