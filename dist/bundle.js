@@ -77,42 +77,43 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
     }, {
       key: 'flipImg',
       value: function flipImg(div) {
+        var _this2 = this;
+
+        /*
+        let d1 = (div === 'div1') ? 'div2' : 'div1';
+        let d2 = (div === 'div1') ? 'div1' : 'div2';
+        let elm = $('.cb-slideshow');
+        this.link = this.conf.ad[this.linkNumber].url;
+        elm.attr('data', this.link);
+        let a = (div === 'div1') ? '180deg' : '0deg';
+        */
+        console.log(div + ' : ' + this.i);
         var d1 = div === 'div1' ? 'div2' : 'div1';
         var d2 = div === 'div1' ? 'div1' : 'div2';
         var elm = $('.cb-slideshow');
-        var _this = this;
-        _this.link = this.conf.ad[_this.linkNumber].url;
-        elm.attr('data', _this.link);
-        var a = div === 'div1' ? '180deg' : '0';
+        this.link = this.conf.ad[this.linkNumber].url;
+        elm.attr('data', this.link);
+        var a = div === 'div1' ? '180deg' : '0deg';
 
         elm.css({
-          'perspective': 1000,
-          'transition': '.3s',
+          'perspective': 0,
+          'transition': '1s',
           'transform': 'rotateY(' + a + ')',
-          'transformStyle': 'preserve-3d',
-          'position': 'relative'
+          'transformStyle': 'preserve-3d'
         });
 
-        _this[d2].animate({
-          //'opacity': 0
-        }, _this.conf.duration, function () {
-          _this[d2].css({
-            //'backfaceVisibility': 'hidden',
-            'opacity': 1,
-            'background-image': 'url(' + _this.conf.ad[_this.i].img + ')'
-          });
-          _this.linkNumber++;
-          _this.i++;
+        this[d2].css({
+          'transform': 'rotateY(' + a + ')',
+          'background-image': 'url(' + this.conf.ad[this.i].img + ')'
         });
-        _this[d1].css({
-          'opacity': 0,
-          //'backfaceVisibility': 'visible',
-          //'transform': 'rotateY(180deg)',
-          'z-index': 1
-        }).animate({
-          //'opacity': 1
-        }, _this.conf.duration);
-        _this.displayImgFlag = d1;
+
+        setTimeout(function () {
+          _this2[d1].css('opacity', 0);
+          _this2[d2].css('opacity', 1);
+          _this2.linkNumber++;
+          _this2.i++;
+          _this2.displayImgFlag = d1;
+        }, 300);
       }
     }, {
       key: 'changeImg',
@@ -138,6 +139,30 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
     }, {
       key: 'makeBg',
       value: function makeBg() {
+        var div1s = void 0,
+            div2s = void 0;
+        switch (this.conf.slideShowType) {
+          case 'fade':
+            div1s = {
+              'z-index': 1,
+              'opacity': 1
+            };
+            div2s = {
+              'z-index': 0,
+              'opacity': 0
+            };
+            break;
+          case 'flip':
+            div1s = {
+              'opacity': 0
+            };
+            div2s = {
+              'opacity': 1
+            };
+            break;
+          default:
+            break;
+        }
         var divStyle = {
           'background-size': 'contain',
           'background-repeat': 'no-repeat',
@@ -148,16 +173,8 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
           'width': this.conf.width,
           'height': this.conf.height
         };
-        var div1Style = {
-          'z-index': 1,
-          'opacity': 1,
-          'background-image': 'url(' + this.conf.ad[0].img + ')'
-        };
-        var div2Style = {
-          'z-index': 0,
-          'opacity': 0,
-          'background-image': 'url(' + this.conf.ad[1].img + ')'
-        };
+        var div1Style = $.extend({}, div1s, { 'background-image': 'url(' + this.conf.ad[0].img + ')' });
+        var div2Style = $.extend({}, div2s, { 'background-image': 'url(' + this.conf.ad[1].img + ')' });
         var div3Style = {
           'z-index': this.conf.zIndex,
           'position': 'relative',
@@ -219,21 +236,21 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
     }, {
       key: 'clickAd',
       value: function clickAd() {
-        var _this2 = this;
+        var _this3 = this;
 
         var elm = $('.cb-slideshow');
         elm.on('click', function () {
-          if (_this2.conf.targetBlank) {
-            window.open(_this2.link);
+          if (_this3.conf.targetBlank) {
+            window.open(_this3.link);
           } else {
-            window.location.href = _this2.link;
+            window.location.href = _this3.link;
           }
         });
       }
     }, {
       key: 'init',
       value: function init() {
-        var _this3 = this;
+        var _this4 = this;
 
         this.getAd();
         this.getImgSize();
@@ -247,7 +264,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         if (this.conf.ad.length) {
           this.preloadImg();
           this.setTimer = setInterval(function () {
-            _this3.changeImg();
+            _this4.changeImg();
           }, this.conf.interval);
         }
         this.clickAd();
@@ -260,10 +277,10 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
 
   $.extend($.fn, {
     slideShowAd: function slideShowAd(options) {
-      var _this4 = this;
+      var _this5 = this;
 
       return this.each(function () {
-        new SlideShowAd(_this4, options).init();
+        new SlideShowAd(_this5, options).init();
       });
     }
   });
