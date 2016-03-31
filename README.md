@@ -13,7 +13,7 @@
 
 ## Demo
 
-[http://support.moba8.net/tools/slideshowad/demo.html](http://support.moba8.net/tools/slideshowad/demo.html)
+[http://maechabin.github.io/jquery-slideShowAd-js/](http://maechabin.github.io/jquery-slideShowAd-js/)
 
 ## Download
 
