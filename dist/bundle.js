@@ -54,7 +54,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
 
         var d1 = div === 'div1' ? 'div2' : 'div1';
         var d2 = div === 'div1' ? 'div1' : 'div2';
-        var elm = $('.cb-slideshow');
+        var elm = this.div3;
         this.link = this.conf.ad[this.linkNumber].url;
         elm.attr('data', this.link);
 
@@ -82,7 +82,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
 
         var d1 = div === 'div1' ? 'div2' : 'div1';
         var d2 = div === 'div1' ? 'div1' : 'div2';
-        var elm = $('.cb-slideshow');
+        var elm = this.div3;
         this.link = this.conf.ad[this.linkNumber].url;
         elm.attr('data', this.link);
         var a = div === 'div1' ? '180deg' : '0deg';

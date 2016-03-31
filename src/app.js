@@ -37,10 +37,11 @@ var jQuery = require('jquery');
       };
     }
 
+
     fadeImg(div) {
       let d1 = (div === 'div1') ? 'div2' : 'div1';
       let d2 = (div === 'div1') ? 'div1' : 'div2';
-      let elm = $('.cb-slideshow');
+      let elm = this.div3;
       this.link = this.conf.ad[this.linkNumber].url;
       elm.attr('data', this.link);
 
@@ -65,7 +66,7 @@ var jQuery = require('jquery');
     flipImg(div) {
       let d1 = (div === 'div1') ? 'div2' : 'div1';
       let d2 = (div === 'div1') ? 'div1' : 'div2';
-      let elm = $('.cb-slideshow');
+      let elm = this.div3;
       this.link = this.conf.ad[this.linkNumber].url;
       elm.attr('data', this.link);
       let a = (div === 'div1') ? '180deg' : '0deg';

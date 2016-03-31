@@ -4,7 +4,8 @@
 <head>
 <meta charset="utf-8">
 <style>
-.image {
+.image,
+.image2 {
   display: none;
 }
 </style>
@@ -30,7 +31,7 @@
   <img border="0" width="1" height="1" src="http://www15.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6KESX&guid=on" alt="">
 </div>
 
-<div>
+<div class="image2">
 <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6HU7L&guid=on">
 <img border="0" width="320" height="50" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001091000&mc=1"></a>
 <img border="0" width="1" height="1" src="http://www13.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6HU7L&guid=on" alt="">
@@ -51,7 +52,8 @@
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="./dist/bundle.js"></script>
 <script>
-$('.image').slideShowAd({
+$('.image').slideShowAd();
+$('.image2').slideShowAd({
   targetBlank: true,
   height: '100px',
   interval: '5000',
