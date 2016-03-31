@@ -3,60 +3,151 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title>スライドショー動画広告実装jQueryプラグイン jquery-slideShowAd-js</title>
+<meta name="description" content="jquery-slideShowAd-js スライドショー動画広告実装jQueryプラグイン - jQuery Plugin to create video ads" />
+<meta name="keywords"  content="JavaScript, jQuery-plugin, slideshowad" />
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+
 <style>
+body {
+  background-color: #263238;
+  color: #fff;
+  padding: 16px;
+  margin: 0;
+  text-align: center;
+}
+h1 {
+  font-size: 48px;
+  margin-bottom: 0;
+}
+figure {
+  margin-top: 0;
+  display: inline-block;
+}
 .image,
 .image2 {
   display: none;
+}
+.button {
+  display: inline-block;
+}
+.button a {
+  display: block;
+  margin: 24px auto;
+  width: 300px;
+  padding: 24px 0;
+  color: #fff;
+  background-color: #607D8B;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 3px;
+  font-weight: bold;
+}
+.note {
+  box-sizing: border-box;
+  max-width: 800px;
+  width: 100%;
+  background-color: #eee;
+  text-align: left;
+  margin: 16px auto;
+  padding: 8px;
+  color: #424242;
+  border-radius: 3px;
 }
 </style>
 </head>
 
 <body>
-<h1>SlideShowAd</h1>
-<div class="image">
-  <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6HU7L&guid=on">
-  <img border="0" width="320" height="50" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001091000&mc=1"></a>
-  <img border="0" width="1" height="1" src="http://www13.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6HU7L&guid=on" alt="">
-  <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6IP2P&guid=on">
-  <img border="0" width="320" height="50" alt="" src="http://www27.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001095000&mc=1"></a>
-  <img border="0" width="1" height="1" src="http://www18.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6IP2P&guid=on" alt="">
-  <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6GC75&guid=on">
-  <img border="0" width="320" height="50" alt="" src="http://www22.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001084000&mc=1"></a>
-  <img border="0" width="1" height="1" src="http://www16.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6GC75&guid=on" alt="">
-  <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6I1XD&guid=on">
-  <img border="0" width="320" height="50" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001092000&mc=1"></a>
-  <img border="0" width="1" height="1" src="http://www16.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6I1XD&guid=on" alt="">
-  <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6KESX&guid=on">
-  <img border="0" width="468" height="60" alt="" src="http://www20.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001103000&mc=1"></a>
-  <img border="0" width="1" height="1" src="http://www15.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6KESX&guid=on" alt="">
+<h1>jQuery-slideShowAd-js</h1>
+
+<p style="font-size: 20px;margin:16px auto 24px;">スライドショー動画広告実装jQueryプラグイン<br>jQuery Plugin to create video ads</p>
+
+<div>
+  <p class="button"><a href="https://github.com/moba8net/jquery-slideshowad-js/blob/master/README.md" target="_blank">プラグイン詳細</a></p>
+  <p class="button"><a href="http://support.moba8.net/tools/slideshowad/jquery.slideshowad.zip">ダウンロード</a></p>
 </div>
 
-<div class="image2">
-<a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6HU7L&guid=on">
-<img border="0" width="320" height="50" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001091000&mc=1"></a>
-<img border="0" width="1" height="1" src="http://www13.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6HU7L&guid=on" alt="">
-<a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6IP2P&guid=on">
-<img border="0" width="320" height="50" alt="" src="http://www27.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001095000&mc=1"></a>
-<img border="0" width="1" height="1" src="http://www18.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6IP2P&guid=on" alt="">
-<a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6GC75&guid=on">
-<img border="0" width="320" height="50" alt="" src="http://www22.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001084000&mc=1"></a>
-<img border="0" width="1" height="1" src="http://www16.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6GC75&guid=on" alt="">
-<a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6I1XD&guid=on">
-<img border="0" width="320" height="50" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001092000&mc=1"></a>
-<img border="0" width="1" height="1" src="http://www16.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6I1XD&guid=on" alt="">
-<a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6KESX&guid=on">
-<img border="0" width="468" height="60" alt="" src="http://www20.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001103000&mc=1"></a>
-<img border="0" width="1" height="1" src="http://www15.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6KESX&guid=on" alt="">
+<p style="bottom_4px;">3秒ごとに画像が切り替わります。（切り替わる間隔はプラグイン側で調整可能です。）</p>
+<figure>
+  <div class="image">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6PRPD&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001128000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www10.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6PRPD&guid=on" alt="">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6Q74X&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001130000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www11.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6Q74X&guid=on" alt="">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6PZF5&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www24.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001129000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www18.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6PZF5&guid=on" alt="">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6OWU9&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001124000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www19.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6OWU9&guid=on" alt="">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6IWSH&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www26.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001096000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www18.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6IWSH&guid=on" alt="">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6NETT&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www26.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001117000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www16.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6NETT&guid=on" alt="">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6QEUP&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www23.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001131000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www16.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6QEUP&guid=on" alt="">
+  </div>
+<figcaption><strong>FadeIn FadeOut Type</strong></figcaption>
+</figure>
+
+<figure>
+  <div class="image2">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6PRPD&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001128000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www10.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6PRPD&guid=on" alt="">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6Q74X&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001130000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www11.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6Q74X&guid=on" alt="">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6PZF5&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www24.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001129000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www18.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6PZF5&guid=on" alt="">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6OWU9&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001124000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www19.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6OWU9&guid=on" alt="">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6IWSH&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www26.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001096000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www18.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6IWSH&guid=on" alt="">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6NETT&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www26.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001117000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www16.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6NETT&guid=on" alt="">
+    <a href="http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6QEUP&guid=on">
+    <img border="0" width="300" height="250" alt="" src="http://www23.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001131000&mc=1"></a>
+    <img border="0" width="1" height="1" src="http://www16.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6QEUP&guid=on" alt="">
+  </div>
+<figcaption><strong>Flip Type</strong></figcaption>
+</figure>
+
+<div class="note">
+  <ul>
+    <li>複数のバナー広告を組み合わせることによって、動画のように見せるスライドショー動画広告を手軽に実装できます。</li>
+    <li>広告をリッチに見せることができ、広告のクリック率を向上させることができます。</li>
+    <li>静止画像では実現できなかった広告にストーリーを持たせるということが可能となり広告の訴求力を高めます。</li>
+    <li>「フェイドインフェイドアウト」、「フリップ」の2種類のスライドショータイプに対応しています。</li>
+    <li>主にアフィリエイトサービスの広告を使用することを想定しているので、アフィリエイトサービスからそのまま広告をコピーして実装できるようになっています。</li>
+  </ul>
 </div>
+
+<div>
+  <p class="button"><a href="https://github.com/moba8net/jquery-slideshowad-js/blob/master/README.md" target="_blank">プラグイン詳細</a></p>
+  <p class="button"><a href="http://support.moba8.net/tools/slideshowad/jquery.slideshowad.zip">ダウンロード</a></p>
+</div>
+
+<p><a href="https://github.com/maechabin/jquery-slideShowAd-js" style="color: #fff">maechabin/jquery-slideshowad-js</a></p>
+
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="./dist/bundle.js"></script>
 <script>
-$('.image').slideShowAd();
+$('.image').slideShowAd({
+  interval: '3000'
+});
 $('.image2').slideShowAd({
-  targetBlank: true,
-  height: '100px',
-  interval: '5000',
+  interval: '3000',
   slideShowType: 'flip'
 });
 </script>
