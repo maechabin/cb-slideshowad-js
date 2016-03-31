@@ -41,38 +41,28 @@ var jQuery = require('jquery');
       let d1 = (div === 'div1') ? 'div2' : 'div1';
       let d2 = (div === 'div1') ? 'div1' : 'div2';
       let elm = $('.cb-slideshow');
-      let _this = this;
-      _this.link = this.conf.ad[_this.linkNumber].url;
-      elm.attr('data', _this.link);
+      this.link = this.conf.ad[this.linkNumber].url;
+      elm.attr('data', this.link);
 
-      _this[d2].animate({
+      this[d2].animate({
         'opacity': 0
-      }, _this.conf.duration, () => {
-        _this[d2].css({
+      }, this.conf.duration, () => {
+        this[d2].css({
           'z-index': 0,
-          'background-image': `url(${_this.conf.ad[_this.i].img})`
+          'background-image': `url(${this.conf.ad[this.i].img})`
         });
-        _this.linkNumber++;
-        _this.i++;
+        this.linkNumber++;
+        this.i++;
       });
-      _this[d1].css({
+      this[d1].css({
         'z-index': 1
       }).animate({
         'opacity': 1
-      }, _this.conf.duration);
-      _this.displayImgFlag = d1;
+      }, this.conf.duration);
+      this.displayImgFlag = d1;
     }
 
     flipImg(div) {
-      /*
-      let d1 = (div === 'div1') ? 'div2' : 'div1';
-      let d2 = (div === 'div1') ? 'div1' : 'div2';
-      let elm = $('.cb-slideshow');
-      this.link = this.conf.ad[this.linkNumber].url;
-      elm.attr('data', this.link);
-      let a = (div === 'div1') ? '180deg' : '0deg';
-*/
-      console.log(div + ' : ' + this.i);
       let d1 = (div === 'div1') ? 'div2' : 'div1';
       let d2 = (div === 'div1') ? 'div1' : 'div2';
       let elm = $('.cb-slideshow');
@@ -87,14 +77,16 @@ var jQuery = require('jquery');
         'transformStyle': 'preserve-3d'
       });
 
-      this[d2].css({
+      this[d1].css({
         'transform': `rotateY(${a})`,
-        'background-image': `url(${this.conf.ad[this.i].img})`
       });
 
       setTimeout(() => {
-        this[d1].css('opacity', 0);
-        this[d2].css('opacity', 1);
+        this[d1].css('opacity', 1);
+        this[d2].css({
+          'background-image': `url(${this.conf.ad[this.i].img})`,
+          'opacity': 0
+        });
         this.linkNumber++;
         this.i++;
         this.displayImgFlag = d1;
@@ -122,28 +114,11 @@ var jQuery = require('jquery');
     }
 
     makeBg() {
-      let div1s, div2s;
-      switch (this.conf.slideShowType) {
-        case 'fade':
-          div1s = {
-            'z-index': 1,
-            'opacity': 1
-          };
-          div2s = {
-            'z-index': 0,
-            'opacity': 0
-          };
-          break;
-        case 'flip':
-          div1s = {
-            'opacity': 0
-          };
-          div2s = {
-            'opacity': 1
-          };
-          break;
-        default:
-          break;
+      let div1DisplayStyle = {};
+      let div2DisplayStyle = {};
+      if (this.conf.slideShowType === 'fade') {
+        div1DisplayStyle = {'z-index': 1};
+        div2DisplayStyle = {'z-index': 0};
       }
       let divStyle = {
         'background-size': 'contain',
@@ -155,8 +130,14 @@ var jQuery = require('jquery');
         'width': this.conf.width,
         'height': this.conf.height
       };
-      let div1Style = $.extend({}, div1s, {'background-image': `url(${this.conf.ad[0].img})`});
-      let div2Style = $.extend({}, div2s, {'background-image': `url(${this.conf.ad[1].img})`});
+      let div1Style = $.extend({}, div1DisplayStyle, {
+        'background-image': `url(${this.conf.ad[0].img})`,
+        'opacity': 1
+      });
+      let div2Style = $.extend({}, div2DisplayStyle, {
+        'background-image': `url(${this.conf.ad[1].img})`,
+        'opacity': 0
+      });
       let div3Style = {
         'z-index': this.conf.zIndex,
         'position': 'relative',

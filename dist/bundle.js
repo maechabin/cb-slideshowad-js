@@ -50,44 +50,36 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
     _createClass(SlideShowAd, [{
       key: 'fadeImg',
       value: function fadeImg(div) {
+        var _this2 = this;
+
         var d1 = div === 'div1' ? 'div2' : 'div1';
         var d2 = div === 'div1' ? 'div1' : 'div2';
         var elm = $('.cb-slideshow');
-        var _this = this;
-        _this.link = this.conf.ad[_this.linkNumber].url;
-        elm.attr('data', _this.link);
+        this.link = this.conf.ad[this.linkNumber].url;
+        elm.attr('data', this.link);
 
-        _this[d2].animate({
+        this[d2].animate({
           'opacity': 0
-        }, _this.conf.duration, function () {
-          _this[d2].css({
+        }, this.conf.duration, function () {
+          _this2[d2].css({
             'z-index': 0,
-            'background-image': 'url(' + _this.conf.ad[_this.i].img + ')'
+            'background-image': 'url(' + _this2.conf.ad[_this2.i].img + ')'
           });
-          _this.linkNumber++;
-          _this.i++;
+          _this2.linkNumber++;
+          _this2.i++;
         });
-        _this[d1].css({
+        this[d1].css({
           'z-index': 1
         }).animate({
           'opacity': 1
-        }, _this.conf.duration);
-        _this.displayImgFlag = d1;
+        }, this.conf.duration);
+        this.displayImgFlag = d1;
       }
     }, {
       key: 'flipImg',
       value: function flipImg(div) {
-        var _this2 = this;
+        var _this3 = this;
 
-        /*
-        let d1 = (div === 'div1') ? 'div2' : 'div1';
-        let d2 = (div === 'div1') ? 'div1' : 'div2';
-        let elm = $('.cb-slideshow');
-        this.link = this.conf.ad[this.linkNumber].url;
-        elm.attr('data', this.link);
-        let a = (div === 'div1') ? '180deg' : '0deg';
-        */
-        console.log(div + ' : ' + this.i);
         var d1 = div === 'div1' ? 'div2' : 'div1';
         var d2 = div === 'div1' ? 'div1' : 'div2';
         var elm = $('.cb-slideshow');
@@ -102,17 +94,19 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
           'transformStyle': 'preserve-3d'
         });
 
-        this[d2].css({
-          'transform': 'rotateY(' + a + ')',
-          'background-image': 'url(' + this.conf.ad[this.i].img + ')'
+        this[d1].css({
+          'transform': 'rotateY(' + a + ')'
         });
 
         setTimeout(function () {
-          _this2[d1].css('opacity', 0);
-          _this2[d2].css('opacity', 1);
-          _this2.linkNumber++;
-          _this2.i++;
-          _this2.displayImgFlag = d1;
+          _this3[d1].css('opacity', 1);
+          _this3[d2].css({
+            'background-image': 'url(' + _this3.conf.ad[_this3.i].img + ')',
+            'opacity': 0
+          });
+          _this3.linkNumber++;
+          _this3.i++;
+          _this3.displayImgFlag = d1;
         }, 300);
       }
     }, {
@@ -139,29 +133,11 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
     }, {
       key: 'makeBg',
       value: function makeBg() {
-        var div1s = void 0,
-            div2s = void 0;
-        switch (this.conf.slideShowType) {
-          case 'fade':
-            div1s = {
-              'z-index': 1,
-              'opacity': 1
-            };
-            div2s = {
-              'z-index': 0,
-              'opacity': 0
-            };
-            break;
-          case 'flip':
-            div1s = {
-              'opacity': 0
-            };
-            div2s = {
-              'opacity': 1
-            };
-            break;
-          default:
-            break;
+        var div1DisplayStyle = {};
+        var div2DisplayStyle = {};
+        if (this.conf.slideShowType === 'fade') {
+          div1DisplayStyle = { 'z-index': 1 };
+          div2DisplayStyle = { 'z-index': 0 };
         }
         var divStyle = {
           'background-size': 'contain',
@@ -173,8 +149,14 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
           'width': this.conf.width,
           'height': this.conf.height
         };
-        var div1Style = $.extend({}, div1s, { 'background-image': 'url(' + this.conf.ad[0].img + ')' });
-        var div2Style = $.extend({}, div2s, { 'background-image': 'url(' + this.conf.ad[1].img + ')' });
+        var div1Style = $.extend({}, div1DisplayStyle, {
+          'background-image': 'url(' + this.conf.ad[0].img + ')',
+          'opacity': 1
+        });
+        var div2Style = $.extend({}, div2DisplayStyle, {
+          'background-image': 'url(' + this.conf.ad[1].img + ')',
+          'opacity': 0
+        });
         var div3Style = {
           'z-index': this.conf.zIndex,
           'position': 'relative',
@@ -236,21 +218,21 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
     }, {
       key: 'clickAd',
       value: function clickAd() {
-        var _this3 = this;
+        var _this4 = this;
 
         var elm = $('.cb-slideshow');
         elm.on('click', function () {
-          if (_this3.conf.targetBlank) {
-            window.open(_this3.link);
+          if (_this4.conf.targetBlank) {
+            window.open(_this4.link);
           } else {
-            window.location.href = _this3.link;
+            window.location.href = _this4.link;
           }
         });
       }
     }, {
       key: 'init',
       value: function init() {
-        var _this4 = this;
+        var _this5 = this;
 
         this.getAd();
         this.getImgSize();
@@ -264,7 +246,7 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
         if (this.conf.ad.length) {
           this.preloadImg();
           this.setTimer = setInterval(function () {
-            _this4.changeImg();
+            _this5.changeImg();
           }, this.conf.interval);
         }
         this.clickAd();
@@ -277,10 +259,10 @@ var jQuery = (typeof window !== "undefined" ? window['$'] : typeof global !== "u
 
   $.extend($.fn, {
     slideShowAd: function slideShowAd(options) {
-      var _this5 = this;
+      var _this6 = this;
 
       return this.each(function () {
-        new SlideShowAd(_this5, options).init();
+        new SlideShowAd(_this6, options).init();
       });
     }
   });
