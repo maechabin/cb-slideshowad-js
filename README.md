@@ -13,7 +13,7 @@
 
 ## Demo
 
-[http://maechabin.github.io/jquery-slideShowAd-js/](http://maechabin.github.io/jquery-slideShowAd-js/)
+[https://maechabin.github.io/jquery-slideShowAd-js/](https://maechabin.github.io/jquery-slideShowAd-js/)
 
 ## Download
 
