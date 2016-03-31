@@ -135,7 +135,7 @@ $('.slideshowad-images').slideShowAd({
 // スライドショータイプをフリップタイプ、リンク先を別ウィンドウで表示させる設定
 $('.slideshowad-images').slideShowAd({
   'slideShowType': 'flip',
-  'targetBlank': ture
+  'targetBlank': true
 });
 ```
 
