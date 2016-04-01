@@ -1,6 +1,6 @@
 {
   "name": "slideshowad",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "description": "複数のバナー広告を組み合わせてスライドショー動画広告を実装するためのjQueryプラグイン",
   "main": "./dist/jquery.slideshowad.js",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:maechabin/jquery-slideShowAd-js.git"
+    "url": "git@github.com:maechabin/cb-slideshowad-js.git"
   },
   "keywords": [
     "jQuery", "jquery-plugin"

@@ -1,4 +1,4 @@
-# jquery-slideshowad-js
+# cb-slideshowad-js
 
 複数のバナー広告を組み合わせて`「スライドショー動画広告」`を実装するためのjQueryプラグイン。
 
@@ -13,14 +13,14 @@
 
 ## Demo
 
-[http://support.moba8.net/tools/slideshowad/demo.html](http://support.moba8.net/tools/slideshowad/demo.html)
+[https://maechabin.github.io/cb-slideshowad-js/](https://maechabin.github.io/cb-slideshowad-js/)
 
 ## Download
 
-こちらのページから[ダウンロード](https://github.com/maechabin/jquery-slideShowAd-js/archive/master.zip)するか、`[git clone]`コマンドでローカルにコピーします。
+こちらのページから[ダウンロード](https://github.com/maechabin/cb-slideshowad-js/archive/master.zip)するか、`[git clone]`コマンドでローカルにコピーします。
 
 ```
-$ git clone git@github.com:maechabin/jquery-slideShowAd-js.git 任意のディレクトリ名
+$ git clone git@github.com:maechabin/cb-slideshowad-js.git 任意のディレクトリ名
 ```
 
 npm経由でも入手可能です。
@@ -138,6 +138,12 @@ $('.slideshowad-images').slideShowAd({
   'targetBlank': true
 });
 ```
+
+## 対応ASP（アフィリエイトサービス）一覧
+
+そのまま管理画面から広告タグをコピーして使えるアフィリエイトサービスの一覧です（調査中）。
+
+[A8.net](http://px.a8.net/svt/ejp?a8mat=2BYLM2+1C85JU+0K+10H0IQ) / [Moba8.net](http://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6HU7L&guid=on) / [リンクシェア](http://www.linkshare.ne.jp/scland/mgm/?id=69Bb10/Y2MU) / [TGアフィリエイト](https://www.trafficgate.net/) / [Amazonアソシエイト](https://affiliate.amazon.co.jp/gp/associates/network/main.html)
 
 ## License
 
