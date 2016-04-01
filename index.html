@@ -8,67 +8,7 @@
 <meta name="keywords"  content="JavaScript, jQuery-plugin, slideshowad">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="./css/font-awesome.min.css">
-<style>
-body {
-  background-color: #263238;
-  color: #fff;
-  padding: 16px;
-  margin: 0;
-  text-align: center;
-}
-h1 {
-  font-size: 48px;
-  margin-bottom: 0;
-}
-figure {
-  margin-top: 0;
-  display: inline-block;
-}
-.image,
-.image2 {
-  display: none;
-}
-.button {
-  display: inline-block;
-  margin: 4px 0;
-}
-.button a {
-  display: block;
-  width: 300px;
-  padding: 24px 0;
-  color: #fff;
-  background-color: #607D8B;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 3px;
-  font-weight: bold;
-}
-.note {
-  box-sizing: border-box;
-  max-width: 800px;
-  width: 100%;
-  background-color: #eee;
-  text-align: left;
-  margin: 16px auto;
-  padding: 8px;
-  color: #424242;
-  border-radius: 3px;
-}
-i {
-  font-size: 24px !important;
-}
-.social-button {
-  margin: 32px auto;
-}
-.social-button li {
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 4px; /* ←付け足す */
-}
-.social-button li:last-child {
-  margin-right: 0; /* ←付け足す */
-}
-</style>
+<link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -214,7 +154,8 @@ i {
 
 <p><a href="https://github.com/maechabin/cb-slideshowad-js" style="color: #fff" target="_blank">maechabin/cb-slideshowad-js</a></p>
 
-
+<!-- Place this tag right after the last button or just before your close body tag. -->
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="./dist/bundle.js"></script>
 <script>
@@ -226,8 +167,6 @@ $('.image2').slideShowAd({
   slideShowType: 'flip'
 });
 </script>
-<!-- Place this tag right after the last button or just before your close body tag. -->
-<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
