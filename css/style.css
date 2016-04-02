@@ -5,6 +5,7 @@ body {
   padding: 16px;
   margin: 0;
   text-align: center;
+  box-sizing: border-box;
 }
 a {
   color: #fff;
@@ -14,11 +15,12 @@ h1 {
   margin-bottom: 0;
 }
 figure {
-  margin-top: 0;
+  margin: 0 8px 16px;
   display: inline-block;
 }
 .image,
-.image2 {
+.image2,
+.image3 {
   display: none;
 }
 .button {
@@ -35,6 +37,11 @@ figure {
   text-decoration: none;
   border-radius: 3px;
   font-weight: bold;
+  transition: .5s;
+  opacity: 1;
+}
+.button a:hover {
+  opacity: .7;
 }
 .note {
   box-sizing: border-box;
