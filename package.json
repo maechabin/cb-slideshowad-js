@@ -1,6 +1,6 @@
 {
   "name": "slideshowad",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "複数のバナー広告を組み合わせてスライドショー動画広告を実装するためのjQueryプラグイン",
   "main": "./dist/jquery.slideshowad.js",
   "scripts": {
@@ -23,6 +23,9 @@
   "license": "Mit license",
   "browserify-shim": {
     "jquery": "global:$"
+  },
+  "browser": {
+    "SlideShowAd": "./src/SlideShowAd.js"
   },
   "browserify": {
     "transform": [

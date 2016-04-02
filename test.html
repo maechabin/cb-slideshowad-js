@@ -1,0 +1,82 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>スライドショー動画広告実装jQueryプラグイン jquery-slideShowAd-js</title>
+<meta name="description" content="jquery-slideShowAd-js スライドショー動画広告実装jQueryプラグイン - jQuery Plugin to create video ads">
+<meta name="keywords"  content="JavaScript, jQuery-plugin, slideshowad">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+<style>
+.image,
+.image2 {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+<h1>jQuery-slideShowAd-js</h1>
+
+<div class="image">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6PRPD&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001128000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www10.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6PRPD&guid=on" alt="">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6Q74X&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001130000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www11.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6Q74X&guid=on" alt="">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6PZF5&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www24.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001129000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www18.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6PZF5&guid=on" alt="">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6OWU9&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001124000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www19.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6OWU9&guid=on" alt="">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6IWSH&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www26.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001096000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www18.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6IWSH&guid=on" alt="">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6NETT&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www26.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001117000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www16.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6NETT&guid=on" alt="">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6QEUP&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www23.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001131000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www16.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6QEUP&guid=on" alt="">
+</div>
+
+<div class="image2">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6PRPD&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001128000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www10.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6PRPD&guid=on" alt="">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6Q74X&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001130000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www11.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6Q74X&guid=on" alt="">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6PZF5&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www24.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001129000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www18.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6PZF5&guid=on" alt="">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6OWU9&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www21.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001124000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www19.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6OWU9&guid=on" alt="">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6IWSH&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www26.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001096000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www18.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6IWSH&guid=on" alt="">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6NETT&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www26.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001117000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www16.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6NETT&guid=on" alt="">
+  <a href="https://px.moba8.net/svt/ejp?a8mat=2BU3YH+AFOK9M+3NY+6QEUP&guid=on">
+  <img border="0" width="300" height="250" alt="" src="https://www23.moba8.net/svt/bgt?aid=140812937631&wid=002&eno=01&mid=m00000000475001131000&mc=1"></a>
+  <img border="0" width="1" height="1" src="https://www16.moba8.net/0.jpg?a8mat=2BU3YH+AFOK9M+3NY+6QEUP&guid=on" alt="">
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="./dist/bundle.js"></script>
+<script>
+$('.image').slideShowAd({
+  interval: '3000'
+});
+$('.image2').slideShowAd({
+  interval: '3000',
+  slideShowType: 'flipX'
+});
+</script>
+
+</body>
+</html>
