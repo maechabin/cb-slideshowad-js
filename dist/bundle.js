@@ -14,6 +14,8 @@ var _jquery2 = _interopRequireDefault(_jquery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var SlideShowAd = function () {
@@ -117,6 +119,43 @@ var SlideShowAd = function () {
       }, 300);
     }
   }, {
+    key: 'slideImg',
+    value: function slideImg(div, d) {
+      var _d2$css,
+          _this4 = this;
+
+      var d1 = div === 'div1' ? 'div1' : 'div2';
+      var d2 = div === 'div1' ? 'div2' : 'div1';
+      var d3 = this.div3;
+      var direction = d;
+      var directionValue = '';
+      if (d === 'left' || d === 'right') {
+        directionValue = this.conf.width;
+      }
+      if (d === 'top' || d === 'bottom') {
+        directionValue = this.conf.height;
+      }
+      this.link = this.conf.ad[this.linkNumber].url;
+      this[d1].css(_defineProperty({
+        'top': 'auto',
+        'left': 'auto'
+      }, direction, 0));
+      this[d2].css((_d2$css = {
+        'top': 'auto',
+        'left': 'auto'
+      }, _defineProperty(_d2$css, direction, '-' + directionValue + 'px'), _defineProperty(_d2$css, 'opacity', 1), _d2$css));
+
+      this[d1].stop().animate(_defineProperty({}, direction, directionValue + 'px'), 1000, function () {
+        _this4[d1].css({
+          'background-image': 'url(' + _this4.conf.ad[_this4.i].img + ')'
+        });
+        _this4.linkNumber++;
+        _this4.i++;
+        _this4.displayImgFlag = d2;
+      });
+      this[d2].stop().animate(_defineProperty({}, direction, 0), 1000);
+    }
+  }, {
     key: 'changeImg',
     value: function changeImg() {
       if (this.linkNumber >= this.conf.ad.length) {
@@ -135,6 +174,18 @@ var SlideShowAd = function () {
           break;
         case 'flipY':
           this.flipImg(this.displayImgFlag, 'Y');
+          break;
+        case 'slideLeft':
+          this.slideImg(this.displayImgFlag, 'left');
+          break;
+        case 'slideRight':
+          this.slideImg(this.displayImgFlag, 'right');
+          break;
+        case 'slideTop':
+          this.slideImg(this.displayImgFlag, 'top');
+          break;
+        case 'slideBottom':
+          this.slideImg(this.displayImgFlag, 'bottom');
           break;
         default:
           break;
@@ -173,7 +224,8 @@ var SlideShowAd = function () {
         'display': 'inline-block',
         'width': this.conf.width,
         'height': this.conf.height,
-        'cursor': 'pointer'
+        'cursor': 'pointer',
+        'overflow': 'hidden'
       };
 
       this.link = this.conf.ad[0].url;
@@ -228,21 +280,21 @@ var SlideShowAd = function () {
   }, {
     key: 'clickAd',
     value: function clickAd() {
-      var _this4 = this;
+      var _this5 = this;
 
       var elm = $('.cb-slideshow');
       elm.on('click', function () {
-        if (_this4.conf.targetBlank) {
-          window.open(_this4.link);
+        if (_this5.conf.targetBlank) {
+          window.open(_this5.link);
         } else {
-          window.location.href = _this4.link;
+          window.location.href = _this5.link;
         }
       });
     }
   }, {
     key: 'init',
     value: function init() {
-      var _this5 = this;
+      var _this6 = this;
 
       this.getAd();
       this.getImgSize();
@@ -256,7 +308,7 @@ var SlideShowAd = function () {
       if (this.conf.ad.length) {
         this.preloadImg();
         this.setTimer = setInterval(function () {
-          _this5.changeImg();
+          _this6.changeImg();
         }, this.conf.interval);
       }
       this.clickAd();

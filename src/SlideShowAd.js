@@ -92,6 +92,46 @@ export default class SlideShowAd {
     }, 300);
   }
 
+  slideImg(div, d) {
+    let d1 = (div === 'div1') ? 'div1' : 'div2';
+    let d2 = (div === 'div1') ? 'div2' : 'div1';
+    let d3 = this.div3;
+    let direction = d;
+    let directionValue = '';
+    if (d === 'left' || d === 'right') {
+      directionValue = this.conf.width;
+    }
+    if (d === 'top' || d === 'bottom') {
+      directionValue = this.conf.height;
+    }
+    this.link = this.conf.ad[this.linkNumber].url;
+    this[d1].css({
+      'top': 'auto',
+      'left': 'auto',
+      [direction]: 0,
+    });
+    this[d2].css({
+      'top': 'auto',
+      'left': 'auto',
+      [direction]: `-${directionValue}px`,
+      'opacity': 1
+    });
+
+    this[d1].stop().animate({
+      [direction]: `${directionValue}px`
+    }, 1000, () => {
+      this[d1].css({
+        'background-image': `url(${this.conf.ad[this.i].img})`
+      });
+      this.linkNumber++;
+      this.i++;
+      this.displayImgFlag = d2;
+    });
+    this[d2].stop().animate({
+      [direction]: 0
+    }, 1000);
+  }
+
   changeImg() {
     if (this.linkNumber >= this.conf.ad.length) {
       this.linkNumber = 0;
@@ -109,6 +149,18 @@ export default class SlideShowAd {
         break;
       case 'flipY':
         this.flipImg(this.displayImgFlag, 'Y');
+        break;
+      case 'slideLeft':
+        this.slideImg(this.displayImgFlag, 'left');
+        break;
+      case 'slideRight':
+        this.slideImg(this.displayImgFlag, 'right');
+        break;
+      case 'slideTop':
+        this.slideImg(this.displayImgFlag, 'top');
+        break;
+      case 'slideBottom':
+        this.slideImg(this.displayImgFlag, 'bottom');
         break;
       default:
         break;
@@ -146,7 +198,8 @@ export default class SlideShowAd {
       'display': 'inline-block',
       'width': this.conf.width,
       'height': this.conf.height,
-      'cursor': 'pointer'
+      'cursor': 'pointer',
+      'overflow': 'hidden'
     };
 
     this.link = this.conf.ad[0].url;
