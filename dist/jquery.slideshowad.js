@@ -1,6 +1,6 @@
 /**
 * cb-slideshowad-js
-+ @version v1.2.6
++ @version v1.3.0
 * @author Takanori Maeda (@maechabin)
 * @license MIT license
 */
