@@ -114,7 +114,7 @@ $('.slideshowad-images').slideShowAd();
 - `'flipY'`: Y軸を軸に横方向へのフリップ
 - `'flipX'`: X軸を軸とする縦方向のフリップ
 - `'slideLeft'`: 左から右へのスライド
-- `'slideRIght'`: 右から左へのスライド
+- `'slideRight'`: 右から左へのスライド
 - `'slideTop'`: 上から下へのスライド
 - `'slideBottom'`: 下から上へのスライド
 
