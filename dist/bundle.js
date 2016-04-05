@@ -87,7 +87,6 @@ var SlideShowAd = function () {
       var rotate = '';
       var deg = div === 'div1' ? '180deg' : '0deg';
       if (r === 'X') {
-        console.log(div);
         rotate = 'rotateX(' + deg + ')';
       }
       if (r === 'Y') {

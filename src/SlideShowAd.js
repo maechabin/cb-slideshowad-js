@@ -60,7 +60,6 @@ export default class SlideShowAd {
     let rotate = '';
     let deg = (div === 'div1') ? '180deg' : '0deg';
     if (r === 'X') {
-      console.log(div);
       rotate = `rotateX(${deg})`;
     }
     if (r === 'Y') {
