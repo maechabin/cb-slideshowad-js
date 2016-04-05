@@ -253,8 +253,8 @@ export default class SlideShowAd {
   }
 
   clickAd() {
-    let elm = $('.cb-slideshow');
-    elm.on('click', () => {
+    this.div3.on('click', (e) => {
+      e.preventDefault();
       if (this.conf.targetBlank) {
         window.open(this.link);
       } else {

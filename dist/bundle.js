@@ -282,8 +282,8 @@ var SlideShowAd = function () {
     value: function clickAd() {
       var _this5 = this;
 
-      var elm = $('.cb-slideshow');
-      elm.on('click', function () {
+      this.div3.on('click', function (e) {
+        e.preventDefault();
         if (_this5.conf.targetBlank) {
           window.open(_this5.link);
         } else {
