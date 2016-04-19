@@ -1,6 +1,6 @@
 {
   "name": "slideshowad",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "複数のバナー広告を組み合わせてスライドショー動画広告を実装するためのjQueryプラグイン",
   "main": "./dist/jquery.slideshowad.js",
   "scripts": {
@@ -17,7 +17,8 @@
     "url": "git@github.com:maechabin/cb-slideshowad-js.git"
   },
   "keywords": [
-    "jQuery", "jquery-plugin"
+    "jQuery",
+    "jquery-plugin"
   ],
   "homepage": "http://mae.chab.in/",
   "license": "Mit license",
@@ -41,6 +42,9 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "browserify-shim": "^3.8.12",
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb": "^7.0.0",
+    "eslint-plugin-import": "^1.5.0",
     "licensify": "^3.1.0",
     "qunitjs": "^1.22.0",
     "uglify": "^0.1.5",

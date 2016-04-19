@@ -23,15 +23,15 @@ var SlideShowAd = function () {
     _classCallCheck(this, SlideShowAd);
 
     this.element = element;
-    this.$element = $(element);
+    this.$element = (0, _jquery2.default)(element);
     this.linkNumber = 1;
     this.i = 2;
     this.setTimer = '';
     this.adImg = this.$element.find('a').eq(0).find('img').eq(0);
     this.displayImgFlag = 'div1';
-    this.div1 = $('<div>');
-    this.div2 = $('<div>');
-    this.div3 = $('<div>').attr('class', 'cb-slideshow');
+    this.div1 = (0, _jquery2.default)('<div>');
+    this.div2 = (0, _jquery2.default)('<div>');
+    this.div3 = (0, _jquery2.default)('<div>').attr('class', 'cb-slideshow');
     this.link = '';
     this.conf = {};
     this.options = options;
@@ -60,7 +60,7 @@ var SlideShowAd = function () {
       d3.attr('data', this.link);
 
       this[d1].animate({
-        'opacity': 0
+        opacity: 0
       }, this.conf.duration, function () {
         _this2[d1].css({
           'z-index': 0,
@@ -72,7 +72,7 @@ var SlideShowAd = function () {
       this[d2].css({
         'z-index': 1
       }).animate({
-        'opacity': 1
+        opacity: 1
       }, this.conf.duration);
       this.displayImgFlag = d2;
     }
@@ -84,8 +84,8 @@ var SlideShowAd = function () {
       var d1 = div === 'div1' ? 'div1' : 'div2';
       var d2 = div === 'div1' ? 'div2' : 'div1';
       var d3 = this.div3;
-      var rotate = '';
       var deg = div === 'div1' ? '180deg' : '0deg';
+      var rotate = '';
       if (r === 'X') {
         rotate = 'rotateX(' + deg + ')';
       }
@@ -96,20 +96,20 @@ var SlideShowAd = function () {
       d3.attr('data', this.link);
 
       d3.css({
-        'perspective': 0,
-        'transition': '1s',
-        'transform': rotate,
-        'transformStyle': 'preserve-3d'
+        perspective: 0,
+        transition: '1s',
+        transform: rotate,
+        transformStyle: 'preserve-3d'
       });
 
       this[d2].css({
-        'transform': rotate
+        transform: rotate
       });
 
       setTimeout(function () {
         _this3[d1].css({
           'background-image': 'url(' + _this3.conf.ad[_this3.i].img + ')',
-          'opacity': 0
+          opacity: 0
         });
         _this3[d2].css('opacity', 1);
         _this3.linkNumber++;
@@ -125,7 +125,6 @@ var SlideShowAd = function () {
 
       var d1 = div === 'div1' ? 'div1' : 'div2';
       var d2 = div === 'div1' ? 'div2' : 'div1';
-      var d3 = this.div3;
       var direction = d;
       var directionValue = '';
       if (d === 'left' || d === 'right') {
@@ -136,12 +135,12 @@ var SlideShowAd = function () {
       }
       this.link = this.conf.ad[this.linkNumber].url;
       this[d1].css(_defineProperty({
-        'top': 'auto',
-        'left': 'auto'
+        top: 'auto',
+        left: 'auto'
       }, direction, 0));
       this[d2].css((_d2$css = {
-        'top': 'auto',
-        'left': 'auto'
+        top: 'auto',
+        left: 'auto'
       }, _defineProperty(_d2$css, direction, '-' + directionValue + 'px'), _defineProperty(_d2$css, 'opacity', 1), _d2$css));
 
       this[d1].stop().animate(_defineProperty({}, direction, directionValue + 'px'), 1000, function () {
@@ -203,33 +202,33 @@ var SlideShowAd = function () {
         'background-size': 'contain',
         'background-repeat': 'no-repeat',
         'background-color': this.conf.backgroundColor,
-        'position': 'absolute',
-        'top': 0,
-        'left': 0,
-        'width': this.conf.width,
-        'height': this.conf.height
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: this.conf.width,
+        height: this.conf.height
       };
-      var div1Style = $.extend({}, div1DisplayStyle, {
+      var div1Style = _jquery2.default.extend({}, div1DisplayStyle, {
         'background-image': 'url(' + this.conf.ad[0].img + ')',
-        'opacity': 1
+        opacity: 1
       });
-      var div2Style = $.extend({}, div2DisplayStyle, {
+      var div2Style = _jquery2.default.extend({}, div2DisplayStyle, {
         'background-image': 'url(' + this.conf.ad[1].img + ')',
-        'opacity': 0
+        opacity: 0
       });
       var div3Style = {
         'z-index': this.conf.zIndex,
-        'position': 'relative',
-        'display': 'inline-block',
-        'width': this.conf.width,
-        'height': this.conf.height,
-        'cursor': 'pointer',
-        'overflow': 'hidden'
+        position: 'relative',
+        display: 'inline-block',
+        width: this.conf.width,
+        height: this.conf.height,
+        cursor: 'pointer',
+        overflow: 'hidden'
       };
 
       this.link = this.conf.ad[0].url;
-      this.div1.css($.extend({}, divStyle, div1Style));
-      this.div2.css($.extend({}, divStyle, div2Style));
+      this.div1.css(_jquery2.default.extend({}, divStyle, div1Style));
+      this.div2.css(_jquery2.default.extend({}, divStyle, div2Style));
       this.div3.append(this.div1, this.div2).css(div3Style).attr('data', this.link);
       this.$element.after(this.div3);
     }
@@ -239,15 +238,15 @@ var SlideShowAd = function () {
       this.conf.ad.forEach(function (obj) {
         var imgTag = document.createElement('img');
         imgTag.src = obj.img;
-        //imgTag.src = obj.impimg;
+        // imgTag.src = obj.impimg;
       });
     }
   }, {
     key: 'getAd',
     value: function getAd() {
       var _this = this;
-      _this.$element.find('a').each(function () {
-        var $this = $(this);
+      _this.$element.find('a').each(function getAdInfo() {
+        var $this = (0, _jquery2.default)(this);
         var adObj = {};
         var img = $this.find('img').eq(0).attr('src') || '';
         var url = $this.attr('href') || '';
@@ -268,7 +267,7 @@ var SlideShowAd = function () {
         imgSize.height = this.defaults.height;
       } else {
         var imgObj = new Image();
-        imgObj.src = img.attr('src');
+        imgObj.src = this.adImg.attr('src');
         this.defaults.width = imgObj.width;
         this.defaults.height = imgObj.height;
         imgSize.width = this.defaults.width;
@@ -297,11 +296,11 @@ var SlideShowAd = function () {
 
       this.getAd();
       this.getImgSize();
-      this.conf = $.extend({}, this.defaults, this.options);
+      this.conf = _jquery2.default.extend({}, this.defaults, this.options);
       this.$element.css({
-        'display': 'none',
-        'width': this.conf.width,
-        'height': this.conf.height
+        display: 'none',
+        width: this.conf.width,
+        height: this.conf.height
       });
       this.makeBg();
       if (this.conf.ad.length) {
@@ -341,9 +340,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object' && _typeof(module.exports) === 'object') {
     module.exports = factory((typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null), require('SlideShowAd'), window, document);
   } else {
-    factory(_jquery2.default, window, document);
+    factory(_jquery2.default);
   }
-})(function ($, window, document, undefined) {
+})(function ($) {
   $.extend($.fn, {
     slideShowAd: function slideShowAd(options) {
       var _this = this;

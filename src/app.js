@@ -5,14 +5,14 @@ import SlideShowAd from './SlideShowAd';
   if (typeof module === 'object' && typeof module.exports === 'object') {
     module.exports = factory(require('jquery'), require('SlideShowAd'), window, document);
   } else {
-    factory(jQuery, window, document);
+    factory(jQuery);
   }
-}) (($, window, document, undefined) => {
+})(($) => {
   $.extend($.fn, {
     slideShowAd(options) {
       return this.each(() => {
         new SlideShowAd(this, options).init();
       });
-    }
+    },
   });
 });
