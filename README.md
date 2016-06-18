@@ -117,6 +117,7 @@ $('.slideshowad-images').slideShowAd();
 - `'slideRight'`: 右から左へのスライド
 - `'slideTop'`: 上から下へのスライド
 - `'slideBottom'`: 下から上へのスライド
+- `'none'`: エフェクトなしのスライドショー
 
 **width {String}**
 スライドショー動画広告を表示させる要素の「幅」を指定します。CSSでwidthに指定できる値で指定します。デフォルト値は、1つ目の広告として貼り付けた画像のサイズの幅となります。
@@ -157,6 +158,9 @@ $('.slideshowad-images').slideShowAd({
 Mit License
 
 ## Update
+
+### v1.3.4
+- slideShowTypeオプションに`none`を追加。
 
 ### v1.3.0
 - オプションにスライドタイプ（前 / 後 / 左 / 右）を追加。

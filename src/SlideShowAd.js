@@ -140,28 +140,24 @@ export default class SlideShowAd {
 
     switch (this.conf.slideShowType) {
       case 'fade':
-        this.fadeImg(this.displayImgFlag);
-        break;
+        return this.fadeImg(this.displayImgFlag);
       case 'flipX':
-        this.flipImg(this.displayImgFlag, 'X');
-        break;
+        return this.flipImg(this.displayImgFlag, 'X');
       case 'flipY':
-        this.flipImg(this.displayImgFlag, 'Y');
-        break;
+        return this.flipImg(this.displayImgFlag, 'Y');
       case 'slideLeft':
-        this.slideImg(this.displayImgFlag, 'left');
-        break;
+        return this.slideImg(this.displayImgFlag, 'left');
       case 'slideRight':
-        this.slideImg(this.displayImgFlag, 'right');
-        break;
+        return this.slideImg(this.displayImgFlag, 'right');
       case 'slideTop':
-        this.slideImg(this.displayImgFlag, 'top');
-        break;
+        return this.slideImg(this.displayImgFlag, 'top');
       case 'slideBottom':
-        this.slideImg(this.displayImgFlag, 'bottom');
-        break;
+        return this.slideImg(this.displayImgFlag, 'bottom');
+      case 'none':
+        this.conf.duration = 0;
+        return this.fadeImg(this.displayImgFlag);
       default:
-        break;
+        return false;
     }
   }
 
