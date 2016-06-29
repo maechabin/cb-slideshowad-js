@@ -1,5 +1,5 @@
 import jQuery from 'jquery';
-import SlideShowAd from './SlideShowAd';
+import SlideShowAd from 'SlideShowAd';
 
 ((factory) => {
   if (typeof module === 'object' && typeof module.exports === 'object') {

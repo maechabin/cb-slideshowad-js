@@ -326,7 +326,7 @@ var _jquery = (typeof window !== "undefined" ? window['$'] : typeof global !== "
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _SlideShowAd = require('./SlideShowAd');
+var _SlideShowAd = require('SlideShowAd');
 
 var _SlideShowAd2 = _interopRequireDefault(_SlideShowAd);
 
@@ -351,4 +351,4 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./SlideShowAd":1,"SlideShowAd":1}]},{},[2]);
+},{"SlideShowAd":1}]},{},[2]);
